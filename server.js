@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv/config');
+const bcrypt = require('bcrypt');
+//require('dotenv/config');
 
 const User = require('./models/users.model');
 
@@ -32,7 +33,7 @@ app.post('/api/users/register', (req, res) => {
     user.save((err, userData) => {
         if(err) return res.json({success: false, err})
         
-        return res.json({success: true})
+        return res.status(200).json({success: true})
     }) 
 })
 
